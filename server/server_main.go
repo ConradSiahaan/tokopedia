@@ -91,10 +91,10 @@ func Palindrome(w http.ResponseWriter, req *http.Request) {
 
     palindrome_templ.Execute(w, req.FormValue("s"))
     if req.FormValue != nil {
-        palindromeState := palindrome.FindPalindrome(req.FormValue("s"))
-        if palindromeState == 1 {
+        palindromeState := palindrome.IsPalindrome(req.FormValue("s"))
+        if palindromeState {
             fmt.Fprintf(w, "PALINDROME")
-        }else if palindromeState == 0 {
+        }else if !palindromeState {
             fmt.Fprintf(w, "NOT PALINDROME")
         }
     }

@@ -12,44 +12,43 @@ import (
  */
 func FindMinmax(text string) (int, int, int) {
 	
-	if text != "" {
-
-		reg, err := regexp.Compile("[^A-Za-z]+")
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		newText := reg.ReplaceAllString(text,"")
-		newText = strings.ToLower(strings.Trim(newText, "-"))
-
-		i := 1
-		temp := 0
-
-		r := []rune(newText)
-
-		min := int(r[0]) - 96
-		max := int(r[0]) - 96
-		sum := int(r[0]) - 96
-
-		for i < len(newText) {
-			temp = int(r[i]) - 96
-			if temp < min {
-				min = temp
-			}
-			if temp > max {
-				max = temp
-			}
-
-			sum += temp
-
-			i++
-
-		}
-
-		return min, max, sum
-	}else{
+	if text == "" {
 		return 0,0,0
 	}
+	
+	reg, err := regexp.Compile("[^A-Za-z]+")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	newText := reg.ReplaceAllString(text,"")
+	newText = strings.ToLower(strings.Trim(newText, "-"))
+
+	i := 1
+	temp := 0
+
+	r := []rune(newText)
+
+	min := int(r[0]) - 96
+	max := int(r[0]) - 96
+	sum := int(r[0]) - 96
+
+	for i < len(newText) {
+		temp = int(r[i]) - 96
+		if temp < min {
+			min = temp
+		}
+		if temp > max {
+			max = temp
+		}
+
+		sum += temp
+
+		i++
+
+	}
+
+	return min, max, sum
 }
 
 /*

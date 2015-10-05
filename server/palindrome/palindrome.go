@@ -6,40 +6,39 @@ import (
 	"regexp"
 )
 
-func FindPalindrome(text string) int {
+func IsPalindrome(text string) bool {
 
-	if text != "" {
+	if text == "" {
+		return false
+	}
 
-		reg, err := regexp.Compile("[^A-Za-z]+")
-		if err != nil {
-			log.Fatal(err)
-		}
+	reg, err := regexp.Compile("[^A-Za-z]+")
+	if err != nil {
+		log.Fatal(err)
+	}
 
-		newText := reg.ReplaceAllString(text,"")
-		newText = strings.ToLower(strings.Trim(newText, "-"))
+	newText := reg.ReplaceAllString(text,"")
+	newText = strings.ToLower(strings.Trim(newText, "-"))
 
-		var newA, newB string
+	var newA, newB string
 
-		div := len(newText) / 2
-		mod := len(newText) % 2
-		length := len(newText)
+	div := len(newText) / 2
+	mod := len(newText) % 2
+	length := len(newText)
 
-		if mod == 1 {
-			newA = newText[div+1:length]
-		}else{
-			newA = newText[div:length]
-		}
+	if mod == 1 {
+		newA = newText[div+1:length]
+	}else{
+		newA = newText[div:length]
+	}
 
-		newB = newText[0:div]
-		newARev := Reverse(newA)
+	newB = newText[0:div]
+	newARev := Reverse(newA)
 
-		if newARev == newB {
-			return 1
-		} else {
-			return 0
-		}
+	if newARev == newB {
+		return true
 	} else {
-		return 0
+		return false
 	}
 	
 }
