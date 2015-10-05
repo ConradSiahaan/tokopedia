@@ -7,20 +7,16 @@ func FindMinuteCount(n, u, d int) int {
 
 	i = 0
 
-	if n == 0 {
-		return minuteCount
-	}else{
-		for i < n {
-			i += u
-			minuteCount++
-			if n <= i {
-				break
-			}
-			minuteCount++
-			i -= d
+	for i < n {
+		i += u
+		minuteCount++
+		if n <= i {
+			break
 		}
-		return minuteCount
+		minuteCount++
+		i -= d
 	}
+	return minuteCount
 
 }
 
